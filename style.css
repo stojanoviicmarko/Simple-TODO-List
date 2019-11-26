@@ -6,7 +6,12 @@ body{
     margin-top: 50px;
     margin-right: 10px;
 }
-#button{
+#create{
+    margin-right: 3px;
+    margin-top: 50px;
+    height: 40px;
+}
+#delete{
     margin-top: 50px;
     height: 40px;
 }

@@ -1,13 +1,29 @@
 function createItem() {
-    let list = document.getElementById('list');
-    let input = document.getElementById('input');
-    let item = document.createElement('li');
+	var list = document.getElementById('list');
+	var input = document.getElementById('input');
+	var button = document.getElementById('button');
+	var item = document.createElement('li');
 
-    item.classList.add('list-group-item');
+	item.classList.add('list-group-item');
+	item.innerHTML = input.value;
+	list.appendChild(item);
 
-    item.innerHTML = input.value;
+	item.addEventListener('click', function(event) {
+		if (!item.classList.contains('active')) {
+			item.classList.add('active');
+		} else if (item.classList.contains('active')) {
+			item.classList.remove('active');
+		}
+	});
 
-    list.appendChild(item);
-    
-    input.value = "";
+	input.value = "";
+}
+
+function deleteItem() {
+	var list = document.getElementById('list');
+	var activeItem = document.getElementsByClassName('list-group-item active');
+
+	for (let i = 0; i <= activeItem.length; i++){
+		list.removeChild(activeItem[i]);
+	}
 }

@@ -11,9 +11,10 @@
 </head>
 <body>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="input" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default">
-        <button type="button" id="button" class="btn btn-primary" onclick="createItem()">Create</button>
+        <input type="text" class="form-control" id="input" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Enter text">
+        <button type="button" id="create" class="btn btn-primary" onclick="createItem()">Create</button>
+        <button type="button" id="delete" class="btn btn-danger" onclick="deleteItem()">Delete</button>
+        
     </div>
     <div>
         <ul class="list-group" id="list">
