@@ -24,10 +24,12 @@ function createItem() {
 }
 
 function deleteItem() {
-	var list = document.getElementById('list');
-	var activeItem = document.getElementsByClassName('list-group-item active');
+	var parent = document.getElementById('list');
+	var child = parent.childNodes;
 
-	for (let i = 0; i <= activeItem.length; i++) {
-		list.removeChild(activeItem[i]);
+	if (parent.hasChildNodes()) {
+		while (parent.firstChild) {
+			parent.removeChild(parent.firstChild);
+		}
 	}
-} 
+}
