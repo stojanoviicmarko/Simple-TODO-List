@@ -33,3 +33,13 @@ function deleteItem() {
 		}
 	}
 }
+
+function darkMode(){
+	document.body.style.backgroundColor = "#242424";
+	document.getElementById('input').style.backgroundColor = "#242424";
+}
+
+function defaultMode(){
+	document.body.style.backgroundColor = "white";
+	document.getElementById('input').style.backgroundColor = "white";
+}
