@@ -12,7 +12,7 @@ function createItem() {
 		list.appendChild(item);
 	}
 
-	item.addEventListener('click', function(event) {
+	item.addEventListener('click', (event) => {
 		if (!item.classList.contains('active')) {
 			item.classList.add('active');
 		} else if (item.classList.contains('active')) {
@@ -34,12 +34,31 @@ function deleteItem() {
 	}
 }
 
-function darkMode(){
-	document.body.style.backgroundColor = "#242424";
-	document.getElementById('input').style.backgroundColor = "#242424";
-}
+const slider = document.getElementById('slider');
+const input = document.getElementById('input');
 
-function defaultMode(){
-	document.body.style.backgroundColor = "white";
-	document.getElementById('input').style.backgroundColor = "white";
-}
+window.onload = function() {
+	var localChecked;
+	if (localStorage.getItem('checked') == 'true') {
+		localChecked = true;
+	} else if (localStorage.getItem('checked') == 'false') {
+		localChecked = false;
+	}
+	slider.checked = localChecked;
+	if (document.getElementById('slider').checked == true) {
+		document.body.style.backgroundColor = '#242424';
+		input.style.backgroundColor = '#242424';
+	}
+};
+
+slider.addEventListener('change', (event) => {
+	if (document.getElementById('slider').checked == true) {
+		localStorage.setItem('checked', 'true');
+		document.body.style.backgroundColor = '#242424';
+		input.style.backgroundColor = '#242424';
+	} else if (document.getElementById('slider').checked == false) {
+		localStorage.setItem('checked', 'false');
+		document.body.style.backgroundColor = 'white';
+		input.style.backgroundColor = 'white';
+	}
+});

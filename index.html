@@ -10,20 +10,20 @@
     <title>ToDo List</title>
 </head>
 <body>
-    <div class="input-group mb-3">
+    <div id="input-group" class="input-group mb-3">
+        <label class="switch">
+            <input id="slider" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
         <input type="text" class="form-control" id="input" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Enter text" required>
         <button type="button" id="create" class="btn btn-primary" onclick="createItem()">Create</button>
         <button type="button" id="delete" class="btn btn-danger" onclick="deleteItem()">Delete</button>
     </div>
 
-    <div class="color-mode">
-        <button type="button" class="btn btn-dark" onclick="darkMode()">Dark</button>
-        <button type="button" class="btn btn-light" onclick="defaultMode()">Light</button>
-    </div>
-
     <div>
         <ul class="list-group" id="list">
-            
+            <li id="testItem"></li>            
         </ul>
     </div>
     
