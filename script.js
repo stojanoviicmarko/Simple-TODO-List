@@ -1,8 +1,8 @@
 function createItem() {
-	var list = document.getElementById('list');
-	var input = document.getElementById('input');
-	var button = document.getElementById('button');
-	var item = document.createElement('li');
+	const list = document.getElementById('list');
+	const input = document.getElementById('input');
+	const button = document.getElementById('button');
+	const item = document.createElement('li');
 
 	if (input.value == '') {
 		console.log('Enter Text');
