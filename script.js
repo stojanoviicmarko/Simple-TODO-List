@@ -1,7 +1,23 @@
+const list = document.getElementById('list');
+const input = document.getElementById('input');
+const button = document.getElementById('button');
+const slider = document.getElementById('slider');
+
+window.onload = function() {
+	var localChecked;
+	if (localStorage.getItem('checked') == 'true') {
+		localChecked = true;
+	} else if (localStorage.getItem('checked') == 'false') {
+		localChecked = false;
+	}
+	slider.checked = localChecked;
+	if (slider.checked == true) {
+		document.body.style.backgroundColor = '#242424';
+		input.style.backgroundColor = '#242424';
+	}
+};
+
 function createItem() {
-	const list = document.getElementById('list');
-	const input = document.getElementById('input');
-	const button = document.getElementById('button');
 	const item = document.createElement('li');
 
 	if (input.value == '') {
@@ -10,9 +26,8 @@ function createItem() {
 		item.classList.add('list-group-item');
 		item.innerHTML = input.value;
 		list.appendChild(item);
+		savingToLocalStorage(item);
 	}
-
-
 
 	item.addEventListener('click', (event) => {
 		if (!item.classList.contains('active')) {
@@ -23,11 +38,12 @@ function createItem() {
 	});
 
 	input.value = '';
+
+	console.log(localStorage.getItem('item'));
 }
 
 function deleteItem() {
-	var parent = document.getElementById('list');
-	var child = parent.childNodes;
+	var child = list.childNodes;
 
 	if (parent.hasChildNodes()) {
 		while (parent.firstChild) {
@@ -36,31 +52,21 @@ function deleteItem() {
 	}
 }
 
-const slider = document.getElementById('slider');
-const input = document.getElementById('input');
-
-window.onload = function() {
-	var localChecked;
-	if (localStorage.getItem('checked') == 'true') {
-		localChecked = true;
-	} else if (localStorage.getItem('checked') == 'false') {
-		localChecked = false;
-	}
-	slider.checked = localChecked;
-	if (document.getElementById('slider').checked == true) {
-		document.body.style.backgroundColor = '#242424';
-		input.style.backgroundColor = '#242424';
-	}
-};
-
 slider.addEventListener('change', (event) => {
-	if (document.getElementById('slider').checked == true) {
+	if (slider.checked == true) {
 		localStorage.setItem('checked', 'true');
 		document.body.style.backgroundColor = '#242424';
 		input.style.backgroundColor = '#242424';
-	} else if (document.getElementById('slider').checked == false) {
+	} else if (slider.checked == false) {
 		localStorage.setItem('checked', 'false');
 		document.body.style.backgroundColor = 'white';
 		input.style.backgroundColor = 'white';
 	}
 });
+
+var items = [];
+
+function savingToLocalStorage(item) {
+	items.push(item);
+	localStorage.setItem('item', JSON.stringify(items));
+}
