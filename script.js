@@ -12,6 +12,8 @@ function createItem() {
 		list.appendChild(item);
 	}
 
+
+
 	item.addEventListener('click', (event) => {
 		if (!item.classList.contains('active')) {
 			item.classList.add('active');

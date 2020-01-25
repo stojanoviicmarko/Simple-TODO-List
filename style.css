@@ -17,9 +17,8 @@ body{
 li:hover{
     background-color: rgb(216, 216, 216);
 }
-
-#testItem{
-    display: none;
+#current-items{
+  color: lightgrey;
 }
 
 
