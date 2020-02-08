@@ -1,7 +1,8 @@
 const list = document.getElementById('list');
-const input = document.getElementById('input');
 const button = document.getElementById('button');
 const slider = document.getElementById('slider');
+const listItem = document.getElementsByClassName('list-group-item');
+var localArray = [];
 
 window.onload = function() {
 	var localChecked;
@@ -15,6 +16,24 @@ window.onload = function() {
 		document.body.style.backgroundColor = '#242424';
 		input.style.backgroundColor = '#242424';
 	}
+
+	var dataArray = JSON.parse(localStorage.getItem('items'));
+	if (localArray != null) {
+		localArray = dataArray;
+		console.log(this.array);
+	}
+
+	if (localArray != null) {
+		for (let i = 0; i < localArray.length; i++) {
+			const item = document.createElement('li');
+			item.classList.add('list-group-item');
+			item.id = 'item';
+			item.innerHTML = localArray[i];
+			list.appendChild(item);
+		}
+	}
+
+	console.log(listItem);
 };
 
 function createItem() {
@@ -25,24 +44,18 @@ function createItem() {
 	} else {
 		item.classList.add('list-group-item');
 		item.innerHTML = input.value;
+		item.id = 'item';
 		list.appendChild(item);
-		savingToLocalStorage(item);
 	}
 
-	item.addEventListener('click', (event) => {
-		if (!item.classList.contains('active')) {
-			item.classList.add('active');
-		} else if (item.classList.contains('active')) {
-			item.classList.remove('active');
-		}
-	});
+	localArray.push(input.value);
+	savingData();
 
 	input.value = '';
-
-	console.log(localStorage.getItem('item'));
 }
 
 function deleteItem() {
+	var parent = document.getElementById('list');
 	var child = list.childNodes;
 
 	if (parent.hasChildNodes()) {
@@ -50,6 +63,7 @@ function deleteItem() {
 			parent.removeChild(parent.firstChild);
 		}
 	}
+	localStorage.setItem('items', '');
 }
 
 slider.addEventListener('change', (event) => {
@@ -64,9 +78,6 @@ slider.addEventListener('change', (event) => {
 	}
 });
 
-var items = [];
-
-function savingToLocalStorage(item) {
-	items.push(item);
-	localStorage.setItem('item', JSON.stringify(items));
+function savingData() {
+	localStorage.setItem('items', JSON.stringify(localArray));
 }
