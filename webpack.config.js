@@ -3,8 +3,16 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: './src/js/index.js'   
+        main: './src/js/index.js'
     },
+    devtool: 'inline-source-map',
+    plugins: [
+		new HtmlWebpackPlugin({
+			title: 'My App',
+			filename: 'index.html',
+			template: './src/index.html'
+		})
+    ],
     output: {
         path: path.resolve(__dirname, 'dist'),
 		filename: 'js/bundle.js'
@@ -12,11 +20,11 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     },
-    plugins: [
-		new HtmlWebpackPlugin({
-			title: 'My App',
-			filename: 'index.html',
-			template: './src/index.html'
-		})
-	]
+    module: {
+        rules: [{
+            test: /\.js$/, 
+            exclude: /node_modules/, 
+            loader: "babel-loader"
+        }]
+    }
 }
