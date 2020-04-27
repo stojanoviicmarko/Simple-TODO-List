@@ -7,17 +7,17 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     plugins: [
-		new HtmlWebpackPlugin({
-			title: 'My App',
-			filename: 'index.html',
-			template: './src/index.html'
-		})
+        new HtmlWebpackPlugin({
+            title: 'My App',
+            filename: 'index.html',
+            template: './src/index.html'
+        })
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
-		filename: 'js/bundle.js'
+        filename: 'js/bundle.js'
     },
     devServer: {
         contentBase: './dist'
     }
-}
+};
