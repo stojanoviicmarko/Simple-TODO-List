@@ -1,100 +1,59 @@
-body{
-    margin-right: 20%;
-    margin-left: 20%;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-#input-group{
-    margin-top: 50px;
-    margin-right: 10px;
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-#create{
-    margin-right: 10px;
-    margin-left: 10px;
-    height: 40px;
+.add-task-section {
+	height: 40vh;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
-#delete{
-    height: 40px;
+.add-task-input {
+	padding: 3px;
+	margin: 20px;
+	width: 300px;
+	height: 30px;
+	font-size: 15px;
+	outline: none;
 }
-li{
-  display: block;
+.add-task-button {
+	height: 30px;
+	width: 40px;
+	outline: none;
 }
-li:hover{
-    background-color: rgb(216, 216, 216);
+.list-of-tasks {
+	width: 100%;
+	height: 60vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 }
-#current-items{
-  color: lightgrey;
+.list-of-tasks li {
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	list-style: none;
+	width: 600px;
+	border: 1px solid grey;
 }
-
-
-
-@media only screen and (max-width: 1000px) {
-    body{
-        margin-right: 10%;
-        margin-left: 10%;
-    }
+.list-of-tasks button {
+	width: 60px;
+	height: 30px;
+	background-color: rgb(134, 0, 0);
+	color: white;
+	border: 1px solid black;
+	outline: none;
 }
-
-
-
-/* .................................. */
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin-right: 20px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
