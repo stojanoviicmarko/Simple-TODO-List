@@ -53,6 +53,7 @@ function addItem() {
 	if (domElements.input.value === '') {
 		return;
 	}
+	
 	//creates new taks object
 	const newTask = new Task(domElements.input.value);
 	//adds object to the array
