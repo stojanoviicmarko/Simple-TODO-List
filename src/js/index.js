@@ -36,6 +36,7 @@ function clearInput(inputEl) {
 	inputEl.value = '';
 }
 
+
 function addTaskToArray(array, taks) {
 	array.push(taks);
 }
