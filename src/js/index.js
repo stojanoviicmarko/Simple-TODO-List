@@ -40,7 +40,7 @@ function addTaskToArray(array, taks) {
 	array.push(taks);
 }
 
-function insertHtml(taskObj) {
+function renderHtml(taskObj) {
 	let listDomString = `<li id="${taskObj.id}">
 	<p>${taskObj.name}</p>
 	<button class="delete-task">Delete</button>
@@ -60,9 +60,7 @@ function addItem() {
 	//clears input field after adding
 	clearInput(domElements.input);
 	//inserts the html
-	insertHtml(newTask);
-
-	console.log(arrayOfTaks);
+	renderHtml(newTask);
 }
 
 function deleteItem(id) {
