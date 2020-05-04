@@ -69,5 +69,3 @@ function deleteItem(id) {
 	const task = document.querySelector(`li[id='${id}']`);
 	task.remove();
 }
-
-
