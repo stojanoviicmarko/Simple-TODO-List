@@ -46,7 +46,7 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	list-style: none;
-	width: 600px;
+	width: 90%;
 	border: 1px solid grey;
 }
 .list-of-tasks button {
