@@ -12,8 +12,7 @@ let arrayOfTaks = [];
 const domElements = {
 	input: document.querySelector('.add-task-input'),
 	addButton: document.querySelector('.add-task-button'),
-	taskList: document.querySelector('.list-of-tasks'),
-	deleteButton: document.querySelector('.delete-task')
+	taskList: document.querySelector('.list-of-tasks')
 };
 
 domElements.addButton.addEventListener('click', addItem);
@@ -22,8 +21,14 @@ domElements.input.addEventListener('keypress', e => {
 		addItem();
 	}
 });
+domElements.taskList.addEventListener('click', e => {
+	if(e.target.classList.contains('delete-task')){
+		const taskId = e.target.parentElement.id;
+		deleteItem(taskId);
+	}
+});
 
-if(arrayOfTaks.length != 0) {
+if (arrayOfTaks.length != 0) {
 	domElements.deleteButton.addEventListener('click', deleteItem);
 }
 
@@ -36,7 +41,7 @@ function addTaskToArray(array, taks) {
 }
 
 function insertHtml(taskObj) {
-	let listDomString = `<li>
+	let listDomString = `<li id="${taskObj.id}">
 	<p>${taskObj.name}</p>
 	<button class="delete-task">Delete</button>
 	</li>`;
@@ -57,14 +62,13 @@ function addItem() {
 	//inserts the html
 	insertHtml(newTask);
 
-	if(arrayOfTaks.length != 0){
-	domElements.deleteButton.addEventListener('click', deleteItem);
-	}	
-
 	console.log(arrayOfTaks);
 }
 
-function deleteItem() {
-	console.log('delete button');
+function deleteItem(id) {
+	arrayOfTaks = arrayOfTaks.filter(item => item.id !== Number(id));
+	const task = document.querySelector(`li[id='${id}']`);
+	task.remove();
 }
+
 
